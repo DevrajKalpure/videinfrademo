@@ -121,3 +121,55 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mobile-nav-item {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-nav-panel .mobile-nav-item.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Staggered animation for nav items */
+.mobile-nav-panel .mobile-nav-item:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav-panel .mobile-nav-item:nth-child(2) { transition-delay: 0.2s; }
+.mobile-nav-panel .mobile-nav-item:nth-child(3) { transition-delay: 0.3s; }
+.mobile-nav-panel .mobile-nav-item:nth-child(4) { transition-delay: 0.4s; }
+.mobile-nav-panel .mobile-nav-item:nth-child(5) { transition-delay: 0.5s; }
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+    opacity: 0.7;
+  }
+  50% { 
+    transform: translateY(-12px) rotate(5deg); 
+    opacity: 1;
+  }
+}
+
+/* Ensure mobile nav has solid background on all devices */
+@media (max-width: 768px) {
+  .mobile-nav-panel {
+    background: hsl(var(--background)) !important;
+  }
+  
+  .mobile-nav-panel * {
+    background: inherit !important;
+  }
+}
